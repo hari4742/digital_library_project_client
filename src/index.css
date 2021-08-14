@@ -1,73 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Comfortaa:wght@600&family=Palette+Mosaic&family=Prompt&family=Roboto+Mono:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
-/* Headers */
-.header {
-  position: sticky;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  background-color: #fdf6f0;
-  padding: 15px 90px;
-  align-items: center;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+:root {
+  font-family: "Gowun Dodum", sans-serif;
 }
-.nav {
-  align-self: flex-end;
-  font-size: 25px;
-  text-decoration: none !important;
-  display: flex;
-  gap: 70px;
-  justify-content: space-between;
-  font-family: "Roboto Mono", monospace;
+::-webkit-scrollbar {
+  width: 7px;
 }
-
-.nav .active {
-  text-decoration: none;
-  border-bottom: 2px solid #f5c6aa;
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
-.logo {
-  font-family: "Palette Mosaic", cursive;
-  display: flex;
-  gap: 2px;
-  font-size: 30px;
-  align-items: center;
-}
-.logo p:nth-child(1) {
-  padding: 2px;
-  color: whitesmoke;
-  background-color: #1fab89;
+::-webkit-scrollbar-thumb {
+  background: #888;
   border-radius: 5px;
-  text-shadow: 2px -2px 5px rgba(0, 0, 0, 0.6);
-}
-.logo p:nth-child(2) {
-  text-shadow: 2px -2px 5px rgba(0, 0, 0, 0.4);
-  color: #1fab89;
-}
-.login-btn {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 25px;
-  font-family: "Prompt", sans-serif;
-  margin-top: 10px;
-  color: white;
-  background: linear-gradient(45deg, #aaffc7, #4ecca3);
-  /* background-color: #005792; */
-  padding: 5px;
-  border-radius: 5px;
-  box-shadow: 2px -2px 10px rgba(0, 0, 0, 0.4);
-}
-.login-btn .fas {
-  font-size: 20px;
-  color: rgb(241, 241, 241);
-  background-color: #118df0;
-  border-radius: 45%;
-  padding: 7px;
 }
 
 /* Home */
@@ -96,6 +45,7 @@
 .display-img img {
   width: 100%;
 }
+/*          Features         */
 .features {
   font-size: 35px;
   font-family: "Comfortaa", cursive;
@@ -104,9 +54,9 @@
   /* background: linear-gradient(90deg, #f5c6aa, #fff5eb, #f8e2cf); */
   background-color: #fce8d4;
   position: relative;
-  height: 370px;
+  height: 390px;
   padding: 80px 12px;
-  margin-bottom: 150px;
+  /* margin-bottom: 150px; */
 }
 .feature-cards {
   display: flex;
@@ -153,12 +103,86 @@
   background-color: #565d47;
   color: #f9f9f9;
   padding: 20px 35px;
+  padding-bottom: 12px;
   font-size: 18px;
   font-family: "Comfortaa", cursive;
 }
 .footer .logo {
   display: block;
 }
-/* .footer .logo p:nth-child(1) {
-  color: #565d47;
+
+/*      Book     */
+.book {
+  cursor: pointer;
+  width: 200px;
+  height: 280px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), -2px -2px 5px rgba(0, 0, 0, 0.5);
+}
+.book .img-box img {
+  border-radius: 5px;
+  width: 200px;
+  height: 280px;
+  object-fit: cover;
+  /* transition: transform 0.4s ease-out; */
+}
+/* .book .img-box img:hover {
+  transform: scale(1.1);
 } */
+.book .text-box {
+  font-size: 19px;
+  width: 200px;
+  padding: 20px;
+  position: absolute;
+  padding-top: 230px;
+  padding-bottom: 40px;
+  bottom: 0px;
+  /* background-color: rgba(255, 255, 0, 0.493); */
+  opacity: 0;
+  color: rgb(255, 255, 255);
+  transform: translateY(45px);
+  transition: all 0.5s ease-out;
+}
+.book .text-box:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+/*        Top Picks        */
+.top-picks {
+  background-color: #f7fbfc;
+  display: flex;
+  gap: 60px;
+  flex-direction: column;
+  padding-top: 150px;
+}
+.top-picks h2 {
+  align-self: center;
+  font-size: 50px;
+  color: #8e9ea8;
+}
+.top-picks p {
+  align-self: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  font-family: "Cairo", sans-serif;
+  background-color: #3d82d1;
+  padding: 5px 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 0px 4px #5086c4af;
+  transition: box-shadow 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.top-picks p:hover {
+  box-shadow: 0px 0px 0px 3px #5086c4af;
+}
+.top-picks p:active {
+  box-shadow: 0px 0px 0px 2px #5086c4af;
+}
+.top-picks-books {
+  display: flex;
+  justify-content: space-evenly;
+}

@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 const About = () => {
     return ( 
-        <div className="about">
-            About
-        </div>
+        <Fragment>
+            <Header/>    
+            <div className="about">
+                About
+            </div>
+            <Footer/>
+        </Fragment>
      );
 }
  
