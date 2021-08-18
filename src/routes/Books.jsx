@@ -16,6 +16,7 @@ const Books = () => {
     }
     useEffect(()=>{
         fetchBooks();
+        document.querySelector('.header').scrollIntoView();
     },[])
     const handleCategory= async(e)=>{
         let categories = document.getElementsByClassName('category');

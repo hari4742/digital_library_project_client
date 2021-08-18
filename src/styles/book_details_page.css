@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Francois+One&family=IBM+Plex+Mono&family=PT+Sans+Caption&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
 .book-details-page {
-  padding: 10px 70px;
+  padding: 2px 70px;
   background-color: #f4f9f9;
 }
 .content-img-box img {
@@ -8,16 +9,16 @@
   height: 390px;
   object-fit: cover;
   border-radius: 15px;
-  box-shadow: 0px 0px 5px 4px rgba(122, 112, 112, 0.3);
-  transition: box-shadow 0.4s ease-in-out;
+  box-shadow: 0px 0px 5px 1px rgba(122, 112, 112, 0.3);
+  transition: box-shadow 0.6s ease-out;
 }
 .content-img-box img:hover {
-  box-shadow: 0px 0px 20px 1px rgba(56, 52, 52, 0.577);
+  box-shadow: 0px 0px 20px 4px rgba(83, 81, 81, 0.781);
 }
 .book-details-content {
   display: flex;
-  box-shadow: 0px 0px 10px 2px rgba(122, 112, 112, 0.3);
   border-radius: 15px;
+  box-shadow: 0px 0px 10px 2px rgba(122, 112, 112, 0.3);
   padding: 50px;
   background-color: #f7fbfc;
 }
@@ -81,4 +82,120 @@
   color: white;
   border-radius: 10px;
   box-shadow: 0px 0px 0px 4px #78b0e7;
+}
+/*      Write Review     */
+.write-review {
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 2px rgba(122, 112, 112, 0.3);
+  padding: 30px 50px;
+  background-color: #f7fbfc;
+  margin-top: 60px;
+}
+.review-input {
+  display: flex;
+  margin: 20px 0px;
+  justify-content: space-between;
+}
+.review-input #reviewBox {
+  outline: none;
+  padding: 15px 20px;
+  font-size: 18px;
+  border-radius: 15px;
+  border: 2px solid #cfd0e0;
+}
+.review-btns {
+  /* border: 2px solid black; */
+  font-family: "IBM Plex Mono", monospace;
+  padding: 10px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 19px;
+}
+.review-btns #rating {
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px 5px;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid rgb(160, 159, 157);
+  /* color: rgb(134, 120, 115); */
+  color: rgb(184, 170, 105);
+}
+.review-btns #submit-btn {
+  padding: 8px;
+  background-color: #ffbd22;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 0px 4px #ffdd8cec;
+  cursor: pointer;
+}
+.review-btns #submit-btn:hover {
+  background-color: #ffb300;
+  box-shadow: 0px 0px 0px 4px #fade9cec;
+}
+.reviews {
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 2px rgba(122, 112, 112, 0.3);
+  padding: 30px 50px;
+  background-color: #f7fbfc;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.review-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 50px;
+}
+/*          Review Card      */
+.review-card {
+  display: flex;
+  border: 2px solid rgb(235, 235, 235);
+  padding: 15px;
+  border-radius: 8px;
+  transition: box-shadow 0.5s linear;
+  cursor: pointer;
+}
+.review-card:hover {
+  box-shadow: 0px 0px 20px 0px rgba(94, 91, 91, 0.3);
+}
+.review-card .fa-user {
+  font-size: 30px;
+  margin: 1px 5px;
+}
+.review-card .profile-img {
+  border-radius: 50%;
+  width: 130px;
+  height: 60px;
+  overflow: hidden;
+}
+.review-card .profile-img img {
+  border-radius: 50%;
+  width: 60px;
+  transform: scale(1.3);
+}
+.review-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.user-name {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Dosis", sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+}
+.star-rating {
+  font-size: 20px;
+  color: #fdcb6e;
+}
+.star-rating span {
+  color: rgb(133, 131, 131);
+}
+.user-review {
+  text-align: left;
 }

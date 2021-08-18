@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import backend from '../backend';
 import Logo from '../components/Logo';
+import { AuthContext } from '../context/AuthenticationContext';
 import login_img from "../images/login.png";
 const LoginPage = () => {
+    const {isLogged,setLogged} = useContext(AuthContext);
     const history = useHistory();
-    const handleLogIn = ()=>{
-        history.push("/");
+    const handleLogIn = async()=>{
+        let e_mail = document.getElementById("e_mail").value;
+        let password = document.getElementById("password").value;
+        const regex = /[A-Za-z0-9_\.]+@\w+\.[a-z]+/;
+        if(e_mail === '' || password === ''){
+            alert("Input fields can't be empty.");
+            return false;
+        }else if(!(regex.test(e_mail))){
+            alert("Please Enter a valid mail.");
+            return false;
+        }else{
+            const response = await backend.post("/auth/login",{e_mail,password});
+            if(response.data.status === "success"){
+                localStorage.setItem("token",response.data.token);
+                setLogged(true);
+                history.push("/");
+            }else{
+                alert(response.data.msg);
+            }
+        }
     }
+    useEffect(()=>{
+        // alert(isLogged);
+        if(isLogged===true){
+            history.push("/");
+        }
+        // alert(isLogged);
+    },[]);
     return ( 
         <div className="login-page-container">
             <div className="login-page">

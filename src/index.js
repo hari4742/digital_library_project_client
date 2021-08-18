@@ -7,5 +7,6 @@ import "./styles/header.css";
 import "./styles/signup_page.css";
 import "./styles/books_page.css";
 import "./styles/book_details_page.css";
+import "./styles/profile_page.css";
 
 ReactDOM.render(<App />, document.getElementById("root"));

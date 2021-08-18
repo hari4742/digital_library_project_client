@@ -3,6 +3,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import backend from '../backend';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import Reviews from '../components/Reviews';
+import StarRating from '../components/StarRating';
+import WriteReview from '../components/WriteReview';
 const BookDetails = (props) => {
     const {id,book_name} = useParams();
     const history = useHistory();
@@ -15,7 +18,9 @@ const BookDetails = (props) => {
     }
     useEffect(()=>{
         fetchBook();
+        document.querySelector(".book-details-page").scrollIntoView();
     },[]);
+
     return ( 
         <Fragment>
             <Header/>
@@ -23,7 +28,7 @@ const BookDetails = (props) => {
                 <div className="back-btn">
                 {/* <span class="fas fa-angle-double-left"></span> */}
                 {/* <i class="fas fa-arrow-alt-circle-left"></i> */}
-                <i class="fas fa-arrow-left"></i>
+                <i onClick={()=>{history.goBack()}} className="fas fa-arrow-left"></i>
                 <p onClick={()=>{history.goBack()}}id="back-btn">Back</p>
                 </div>
                 <div className="book-details">
@@ -35,7 +40,9 @@ const BookDetails = (props) => {
                             <p id="title">{book?book.book_name:null}</p>
                             <p><span>Author:</span> {book?book.author:null}</p>
                             <p><span>Genre:</span> {book?book.category:null}</p>
-                            <p>Star Rating(avg_rating)</p>
+                            <div className="star-rating">
+                                <StarRating rating= {3.5}/> <span>(total_ratings)</span>
+                            </div>
                             <div className="btns">
                                 <p id="btn-read"><a rel="noreferrer" target="_blank" href={`https://archive.org/details/${book?book.online_link:null}?ref=ol&view=theater`}>Read Now</a></p>
                                 <p id="btn-save">Add to Collections</p>
@@ -45,12 +52,8 @@ const BookDetails = (props) => {
                             </p>
                         </div>
                     </div>
-                    <div className="write-review">
-                        <h3>Write a Review</h3>
-                    </div>
-                    <div className="reviews">
-                        <h3>Reviews</h3>
-                    </div>
+                    <WriteReview/>
+                    <Reviews/>
                 </div>
             </div>
             <Footer/>
