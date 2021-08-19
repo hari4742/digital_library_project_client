@@ -35,7 +35,7 @@ const SingUp = () => {
                 localStorage.setItem("token",response.data.token);
                 setLogged(true);
                 history.push("/");
-            }else{
+            }else{  
                 alert(response.data.msg);
             }
         }
@@ -46,6 +46,19 @@ const SingUp = () => {
         }else{
             e.target.style.borderBottom = "4px solid red";
         }
+    }
+    const handleViewPassword=()=>{
+        let password2 = document.getElementById("password_retype");
+        let eyeSlash = document.querySelector('.fa-eye-slash');
+        if (password2.type === 'password'){
+            eyeSlash.classList.replace('fa-eye-slash','fa-eye')
+            password2.type = 'text';
+        }else{
+            let eye = document.querySelector('.fa-eye');
+            eye.classList.replace('fa-eye','fa-eye-slash');
+            password2.type = 'password';
+        }
+        
     }
     return ( 
         <div className="signup-page-container">
@@ -64,7 +77,10 @@ const SingUp = () => {
                         </div>
                         <input value={e_mail} onChange={(e)=>{setEmail(e.target.value.toLocaleLowerCase())}} type="email" name="e_mail" id="e_mail" placeholder="E-mail" />
                         <input value={password} onChange={(e)=>{setPassword(e.target.value)}} type="password" name="password" id="password" placeholder="Password" />
-                        <input value={pass2} onChange={(e)=>{setPass2(e.target.value);checkPassword(e);}}  type="password" name="password_retype" id="password_retype" placeholder="Re-enter Password" />
+                        <div className="retype-pass">
+                            <input value={pass2} onChange={(e)=>{setPass2(e.target.value);checkPassword(e);}}  type="password" name="password_retype" id="password_retype" placeholder="Re-enter Password" />
+                            <i onClick={handleViewPassword} className="fas fa-eye-slash"></i>
+                        </div>
                         <input type="submit" value="Sign Up" onClick={handleSignUP} />
                         <p> Already a user? <Link to="/login">Log in Instead!</Link></p>
                     </form>

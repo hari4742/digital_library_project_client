@@ -7,29 +7,34 @@ import Logo from './Logo';
 import ProfileBtn from './Profile/ProfileBtn';
 const Header = () => {
     
-    const {isLogged,setLogged,setUser,user} = useContext(AuthContext);
-    useEffect(()=>{
-        const fetchUser = async()=>{
-            let token = localStorage.getItem("token");
-            // console.log(token);
-            if(token){
-                const response = await backend.post("/auth/verify",{},{headers:{token}});
-                if(response.data.status === "success"){
-                    setLogged(true);
-                    const userInfo = await backend.get(`/auth/user/${response.data.user_id}`);
-                    if(userInfo.data.status === "success"){
-                        setUser(userInfo.data.data);
-                        // console.log(user);
-                    }else{
-                        alert(userInfo.data.msg)
+    const {isLogged,setLogged,setUser,setSavedBooks,user,saved_books} = useContext(AuthContext);
+    const fetchUser = async()=>{
+        let token = localStorage.getItem("token");
+        // console.log(token);
+        if(token){
+            const response = await backend.post("/auth/verify",{},{headers:{token}});
+            if(response.data.status === "success"){
+                setLogged(true);
+                const userInfo = await backend.get(`/auth/user/${response.data.user_id}`);
+                if(userInfo.data.status === "success"){
+                    setUser(userInfo.data.data);
+                    if(user.user_id){
+                        const saved = await backend.get(`/auth/user/${user.user_id}/profile/get/saved_books`);
+                        // console.log(saved.data);
+                        setSavedBooks(saved.data.data);
+                        // console.log(saved_books);
                     }
-                    // alert(response.data.user_id);
                 }else{
-                    setLogged(false);
-                    alert(response.data.msg);
+                    alert(userInfo.data.msg)
                 }
+                // alert(response.data.user_id);
+            }else{
+                setLogged(false);
+                alert(response.data.msg);
             }
         }
+    }
+    useEffect(()=>{
         fetchUser();
     },[]);
     return ( 

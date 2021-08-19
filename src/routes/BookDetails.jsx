@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import backend from '../backend';
 import Footer from '../components/Footer';
@@ -6,9 +6,11 @@ import Header from '../components/Header';
 import Reviews from '../components/Reviews';
 import StarRating from '../components/StarRating';
 import WriteReview from '../components/WriteReview';
+import { AuthContext } from '../context/AuthenticationContext';
 const BookDetails = (props) => {
     const {id,book_name} = useParams();
     const history = useHistory();
+    const {isLogged,user,saved_books,setSavedBooks} = useContext(AuthContext);
     const [book,setBook] = useState();
     const fetchBook = async()=>{
         const response = await backend.get(`/api/book/${id}/details`);
@@ -20,7 +22,52 @@ const BookDetails = (props) => {
         fetchBook();
         document.querySelector(".book-details-page").scrollIntoView();
     },[]);
-
+    const handleAddCollection = async()=>{
+        if(isLogged){
+            const response = await backend.post("/auth/user/profile/add/book",{user_id:user.user_id,book_id:id});
+            if (response.data.status === 'success'){
+                alert(`${book_name} is added to your collection.`);
+                setSavedBooks([...saved_books,{book_id:id,book_img:response.book_img,book_name}])   
+            }
+        }else{
+            alert("Please Log In to add!");
+        }
+    }
+    const [button,setButton] = useState(<p id="btn-save" onClick={handleAddCollection}>Add to Collections</p>);
+    const handleRemoveCollection = async ()=>{
+        const response = await backend.delete(`/auth/user/${user.user_id}/profile/remove/book/${id}`);
+        if(response){
+            const saved = await backend.get(`/auth/user/${user.user_id}/profile/get/saved_books`);
+            // console.log(saved.data);
+            setSavedBooks(saved.data.data);
+            setButton(<p id="btn-save" onClick={handleAddCollection}>Add to Collections</p>);
+            alert(`${book_name} has been removed from collections`);
+        }
+    }
+    useEffect(()=>{
+        for (let book of saved_books){
+            if(book.book_id === id){
+                setButton(<p id="remove-book" onClick={handleRemoveCollection}>Remove from Collections</p>);
+                console.log("uee");
+            }
+        }
+    },[]);
+    useEffect(()=>{
+        for (let book of saved_books){
+            if(book.book_id === id){
+                setButton(<p id="remove-book" onClick={handleRemoveCollection}>Remove from Collections</p>);
+                console.log("ues")
+            }
+        }
+    },[saved_books]);
+    window.onload = ()=>{
+        for (let book of saved_books){
+            if(book.book_id === id){
+                setButton(<p id="remove-book" onClick={handleRemoveCollection}>Remove from Collections</p>);
+                console.log('window on load')
+            }
+        }
+    }
     return ( 
         <Fragment>
             <Header/>
@@ -45,7 +92,8 @@ const BookDetails = (props) => {
                             </div>
                             <div className="btns">
                                 <p id="btn-read"><a rel="noreferrer" target="_blank" href={`https://archive.org/details/${book?book.online_link:null}?ref=ol&view=theater`}>Read Now</a></p>
-                                <p id="btn-save">Add to Collections</p>
+                                {button}
+                                {/* <p id="remove-book" onClick={handleRemoveCollection}>Remove from Collections</p><p id="btn-save" onClick={handleAddCollection}>Add to Collections</p> */}
                             </div>
                             <p id="description">
                                 <span>Description:</span> {book?book.book_description:null}

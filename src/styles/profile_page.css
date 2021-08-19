@@ -182,3 +182,124 @@
   cursor: pointer;
   font-size: 25px;
 }
+
+/*          Update Details     */
+.update-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+  width: 100%;
+  gap: 32px;
+  background: linear-gradient(140deg, #4b7bec, 50%, #778ca3, 50%, #778ca3);
+  /* background: radial-gradient(
+    circle at 40px 0px,
+    #18dcff 50%,
+    #ffaf40 50%,
+    #ffaf40
+  ); */
+}
+.update-info h2 {
+  color: #e4eaf1;
+  font-size: 30px;
+}
+.update-info input {
+  padding: 10px 15px;
+  font-size: 21px;
+  outline: none;
+  border-radius: 5px;
+  border: 3px solid #cad3c8;
+  background-color: #f0f7ff;
+  font-family: "Patrick Hand", cursive;
+}
+.update-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.update-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.update-form form .names {
+  display: flex;
+  gap: 15px;
+}
+.update-btn {
+  display: flex;
+  gap: 80px;
+  font-size: 22px;
+}
+.update-btn p {
+  border-radius: 5px;
+  padding: 5px 8px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.update-btn #cancel_btn {
+  background-color: #fc5c65;
+  box-shadow: 0px 0px 0px 4px #f5999d;
+}
+.update-btn #update_btn {
+  background-color: #45aaf2;
+  box-shadow: 0px 0px 0px 4px #7dbff5;
+}
+.change-pass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  width: 40%;
+}
+.change-pass .pass-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+.change-pass .pass2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+  font-size: 23px;
+  background-color: #f0f7ff;
+  border: 3px solid #cad3c8;
+  border-radius: 5px;
+}
+.change-pass .pass2 input {
+  border: none;
+  width: 100%;
+}
+.change-pass .pass2 i {
+  cursor: pointer;
+  color: #34495e;
+}
+
+/*        Collection     */
+.collections {
+  background: url("../images/collection_img2.jpg");
+  width: 100%;
+  background-size: cover;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.collections h2 {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #8395a7;
+}
+.collections .saved_books {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: absolute;
+  padding: 40px 20px;
+  row-gap: 80px;
+  margin-left: 50px;
+}

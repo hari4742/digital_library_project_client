@@ -60,10 +60,10 @@
   font-size: 15px;
   border: none;
   outline: none;
-  border-bottom: 3px solid rgb(204, 211, 218);
+  color: black;
   padding: 10px 3px;
   background: transparent;
-  color: black;
+  border-bottom: 3px solid rgb(204, 211, 218);
 }
 .signup-page-container .signup-page .signup-form input:focus {
   border-bottom: 4px solid #fc8a15;
@@ -101,4 +101,22 @@
   left: -14px;
   font-size: 17px;
   background: linear-gradient(145deg, #fc8a19, #f7c593, #fc8a19);
+}
+.signup-form .retype-pass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 1px 3px; */
+  background: transparent;
+  /* border-bottom: 3px solid rgb(204, 211, 218) */
+  position: relative;
+}
+.signup-form .retype-pass i {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+.retype-pass input {
+  width: 100%;
+  /* border-bottom: none !important; */
 }

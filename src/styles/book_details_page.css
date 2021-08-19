@@ -83,6 +83,13 @@
   border-radius: 10px;
   box-shadow: 0px 0px 0px 4px #78b0e7;
 }
+.btns #remove-book {
+  padding: 10px;
+  border-radius: 7px;
+  color: white;
+  background-color: #ff9f43;
+  box-shadow: 0px 0px 0px 4px #f3ceab;
+}
 /*      Write Review     */
 .write-review {
   border-radius: 15px;

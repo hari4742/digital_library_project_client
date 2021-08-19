@@ -35,6 +35,18 @@ const LoginPage = () => {
         }
         // alert(isLogged);
     },[]);
+    const handleViewPassword=()=>{
+        let password = document.getElementById("password");
+        let eye = document.querySelector('.input-pass');
+        eye.classList.replace('fa-eye-slash','fa-eye')
+        if (password.type === 'password'){
+            password.type = 'text';
+        }else{
+            eye.classList.replace('fa-eye','fa-eye-slash');
+            password.type = 'password';
+        }
+        
+    }
     return ( 
         <div className="login-page-container">
             <div className="login-page">
@@ -45,7 +57,10 @@ const LoginPage = () => {
                         <Logo/>
                         <h2>Login to your account</h2>
                         <input type="email" name="e_mail" id="e_mail" placeholder="E-Mail" />
-                        <input type="password" name="password" id="password" placeholder="Password" />
+                        <div className="login-password">
+                            <input type="password" name="password" id="password" placeholder="Password" />
+                            <i onClick={handleViewPassword} className="fas fa-eye-slash input-pass"></i>
+                        </div>
                         <input type="submit" onClick={handleLogIn} value="Log In"/>
                         <p id="new-here">New Here? <Link to="/sign-up">sign-up instead!</Link></p>
                     </form>

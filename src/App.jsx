@@ -12,7 +12,7 @@ import Profile from './routes/Profile';
 
 const App = ()=>{
     useEffect(()=>{
-        document.querySelector('.header').scrollIntoView();
+        document.querySelector('body').scrollIntoView();
     },[])
     return(
         <AuthContextProvider>

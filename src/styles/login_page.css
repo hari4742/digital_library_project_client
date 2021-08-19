@@ -105,3 +105,23 @@
   position: relative;
   left: 10px;
 }
+.login-form .login-password {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  /* border: 2px solid darkblue; */
+  /* border-bottom: 3px solid rgb(179, 178, 178); */
+  margin: 30px 15px;
+  width: 100%;
+  position: relative;
+}
+.login-form .login-password input {
+  margin: 0px;
+  width: 100%;
+  /* border: none; */
+}
+.login-form .input-pass {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+}
