@@ -7,13 +7,14 @@ const ReviewCard = (props) => {
             <ProfileImg avatar_id={props.avatar_id}/>
             <div className="review-content">
                 <div className="user-name">
-                    <p>User Name</p>
+                    <p>{props.userName}</p>
                     <div className="star-rating">
-                        <StarRating rating={4}/>
+                        <StarRating rating={props.rating}/>
                     </div>
                 </div>
                 <p className="user-review">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores dolorem laboriosam aliquid natus ab repellendus consequuntur.
+                    <p>{props.review}</p>
+                    
                 </p>
             </div>
         </div>

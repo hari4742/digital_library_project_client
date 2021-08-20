@@ -12,16 +12,26 @@ const BookDetails = (props) => {
     const history = useHistory();
     const {isLogged,user,saved_books,setSavedBooks} = useContext(AuthContext);
     const [book,setBook] = useState();
+    const [reviews,setReviews] = useState([]);
     const fetchBook = async()=>{
         const response = await backend.get(`/api/book/${id}/details`);
         let book = response.data.data;
         setBook(book?book:"no book");
         // console.log(book);
     }
+    const fetchReviews = async()=>{
+        const responce = await backend.get(`/review/get/book/${id}`);
+        setReviews(responce.data.data);
+        // console.log(responce.data.data);
+    }
     useEffect(()=>{
         fetchBook();
+        fetchReviews();
         document.querySelector(".book-details-page").scrollIntoView();
     },[]);
+    // useEffect(()=>{
+    //     fetchReviews();
+    // },[reviews]);
     const handleAddCollection = async()=>{
         if(isLogged){
             const response = await backend.post("/auth/user/profile/add/book",{user_id:user.user_id,book_id:id});
@@ -88,7 +98,7 @@ const BookDetails = (props) => {
                             <p><span>Author:</span> {book?book.author:null}</p>
                             <p><span>Genre:</span> {book?book.category:null}</p>
                             <div className="star-rating">
-                                <StarRating rating= {3.5}/> <span>(total_ratings)</span>
+                                <StarRating rating= {book?book.avg_rating:null}/> <span>({book?book.total_reviews:null})</span>
                             </div>
                             <div className="btns">
                                 <p id="btn-read"><a rel="noreferrer" target="_blank" href={`https://archive.org/details/${book?book.online_link:null}?ref=ol&view=theater`}>Read Now</a></p>
@@ -100,8 +110,8 @@ const BookDetails = (props) => {
                             </p>
                         </div>
                     </div>
-                    <WriteReview/>
-                    <Reviews/>
+                    <WriteReview user_id={user?user.user_id:null} book_id={id} fetchBook={fetchBook} fetchReviews={fetchReviews} />
+                    <Reviews reviews={reviews}/>
                 </div>
             </div>
             <Footer/>
