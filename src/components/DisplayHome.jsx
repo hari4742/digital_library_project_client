@@ -4,10 +4,10 @@ const DisplayHome = () => {
     return ( 
         <div className="display-home">
             <div className="display-text">
-                <h1>Lorem Ipsum</h1>
+                <h1>BOOKS  24/7</h1>
                 <span>
-                    <p>Lorem ipsum dolor sit amet consectetur </p>
-                    <p>adipisicing elit. Nulla, hic.</p>
+                    <p>A Reader lives a thousand lives before</p>
+                    <p>he dies.</p>
                 </span>
             </div>
             <div className="display-img">

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Comfortaa:wght@600&family=Palette+Mosaic&family=Prompt&family=Roboto+Mono:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300&display=swap");
 * {
   margin: 0px;
   padding: 0px;
@@ -35,9 +37,13 @@
 }
 .display-text h1 {
   font-size: 50px;
+  font-family: "Josefin Slab", serif;
+  color: #576574;
 }
 .display-text span {
-  font-size: 20px;
+  font-family: "Advent Pro", sans-serif;
+  font-weight: 500;
+  font-size: 23px;
 }
 .display-img {
   width: 55%;

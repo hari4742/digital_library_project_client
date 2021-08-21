@@ -58,7 +58,7 @@ const BookDetails = (props) => {
         for (let book of saved_books){
             if(book.book_id === id){
                 setButton(<p id="remove-book" onClick={handleRemoveCollection}>Remove from Collections</p>);
-                console.log("uee");
+                // console.log("uee");
             }
         }
     },[]);
@@ -66,7 +66,7 @@ const BookDetails = (props) => {
         for (let book of saved_books){
             if(book.book_id === id){
                 setButton(<p id="remove-book" onClick={handleRemoveCollection}>Remove from Collections</p>);
-                console.log("ues")
+                // console.log("ues")
             }
         }
     },[saved_books]);
@@ -74,7 +74,7 @@ const BookDetails = (props) => {
         for (let book of saved_books){
             if(book.book_id === id){
                 setButton(<p id="remove-book" onClick={handleRemoveCollection}>Remove from Collections</p>);
-                console.log('window on load')
+                // console.log('window on load')
             }
         }
     }
