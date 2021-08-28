@@ -18,6 +18,7 @@ const Header = () => {
                 const userInfo = await backend.get(`/auth/user/${response.data.user_id}`);
                 if(userInfo.data.status === "success"){
                     setUser(userInfo.data.data);
+                    console.log(user);
                     if(user.user_id){
                         const saved = await backend.get(`/auth/user/${user.user_id}/profile/get/saved_books`);
                         // console.log(saved.data);

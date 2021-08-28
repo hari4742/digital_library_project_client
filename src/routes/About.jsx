@@ -11,7 +11,7 @@ const About = () => {
         <div className="about-page">
             <Header/>    
             <div className="about">
-                <img src={aboutBg} alt="bg image" />
+                <img src={aboutBg} alt="bg" />
                 <div className="about-content">
                     <div className="svg-img">
                         <img src={team} alt="team of people" />

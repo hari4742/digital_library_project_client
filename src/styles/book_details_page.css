@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Francois+One&family=IBM+Plex+Mono&family=PT+Sans+Caption&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
 .book-details-page {
   padding: 2px 70px;
   background-color: #f4f9f9;
@@ -209,4 +210,100 @@
 .user-review {
   text-align: left;
   font-size: 18px;
+}
+/*    Add Book Page */
+.add-book {
+  background: url("../images/add_book_bg.svg");
+  min-height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-content: center;
+  font-family: "Dosis", sans-serif;
+}
+.add-book h1,
+.add-book p {
+  text-align: center;
+  margin: 25px 5px;
+  color: #f5f6fa;
+}
+.add-book h1 {
+  text-shadow: 3px -4px 5px rgba(70, 67, 67, 0.507);
+  font-size: 40px;
+}
+.add-book-btns {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+.add-book-btns .fa-arrow-left {
+  font-size: 18px;
+  margin-right: 9px;
+}
+.add-book-btns p:nth-child(1) {
+  background-color: #718093;
+}
+.add-book p {
+  background-color: #9c88ff;
+  width: fit-content;
+  justify-self: center;
+  font-size: 22px;
+  padding: 7px 15px;
+  border-radius: 7px;
+  font-weight: 500;
+  color: #ffffff;
+  box-shadow: 0px 0px 0px 3px #f5f6fadc;
+  cursor: pointer;
+}
+.add-book form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.add-book form select {
+  font-family: "Dosis", sans-serif;
+  font-size: 22px;
+  padding: 5px 10px;
+  outline: none;
+  background-color: #f8f8f8e8;
+  border: 2px solid #bdc3c7;
+  border-radius: 7px;
+  font-weight: 500;
+}
+.add-book form textarea {
+  font-family: "Dosis", sans-serif;
+  font-size: 22px;
+  outline: none;
+  padding: 5px 10px;
+  background-color: #f8f8f8e8;
+  border: 2px solid #bdc3c7;
+  border-radius: 7px;
+  font-weight: 500;
+}
+.add-book form input {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  outline: none;
+  font-size: 22px;
+  padding: 7px 10px;
+  background-color: #f8f8f8e8;
+  border: 2px solid #bdc3c7;
+  border-radius: 7px;
+}
+/*      Add book btn     */
+.search-box {
+  display: flex;
+  align-items: center;
+}
+.add-book-btn {
+  margin: 10px;
+  position: relative;
+  top: 15px;
+  left: 10px;
+  background-color: #fa9842;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 3px #f3d8a8;
 }

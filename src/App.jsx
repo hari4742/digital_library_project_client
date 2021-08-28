@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {BrowserRouter as Router,Switch,Route, useLocation} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Home from './routes/Home';
 import Books from './routes/Books';
 import About from './routes/About';
@@ -8,6 +8,7 @@ import SingUp from './routes/SignUp';
 import BookDetails from './routes/BookDetails';
 import AuthContextProvider from './context/AuthenticationContext';
 import Profile from './routes/Profile';
+import AddBook from './routes/AddBook';
 
 
 const App = ()=>{
@@ -25,6 +26,7 @@ const App = ()=>{
                         <Route exact path="/sign-up" component={SingUp}/>
                         <Route exact path="/books/book/:id/details/:book_name" component={BookDetails}/>
                         <Route exact path="/user/:id/profile/:f_name" component={Profile}/>
+                        <Route exact path="/admin/:id/add/book" component={AddBook}/>
                     </Switch>
             </Router>
         </AuthContextProvider>

@@ -9,12 +9,42 @@ import EditAvatar from '../components/Profile/EditAvatar';
 import UpdateInfo from '../components/Profile/UpdateInfo';
 import Collections from '../components/Profile/Collections';
 import UserReview from '../components/Profile/UserReview';
+import backend from '../backend';
 
 const Profile = (props) => {
+    
     const location = useLocation();
     const history = useHistory();
-    const {user,setLogged,setUser,saved_books}=useContext(AuthContext);
+    const {user,setLogged,setUser,saved_books,setSavedBooks}=useContext(AuthContext);
+
+    const fetchUser = async()=>{
+        let token = localStorage.getItem("token");
+        // console.log(token);
+        if(token){
+            const response = await backend.post("/auth/verify",{},{headers:{token}});
+            if(response.data.status === "success"){
+                setLogged(true);
+                const userInfo = await backend.get(`/auth/user/${response.data.user_id}`);
+                if(userInfo.data.status === "success"){
+                    setUser(userInfo.data.data);
+                    if(user.user_id){
+                        const saved = await backend.get(`/auth/user/${user.user_id}/profile/get/saved_books`);
+                        // console.log(saved.data);
+                        setSavedBooks(saved.data.data);
+                        // console.log(saved_books);
+                    }
+                }else{
+                    alert(userInfo.data.msg)
+                }
+                // alert(response.data.user_id);
+            }else{
+                setLogged(false);
+                alert(response.data.msg);
+            }
+        }
+    }
     useEffect(()=>{
+        fetchUser();
         document.querySelector(".profile-page").scrollIntoView();
     },[]);
     const handleLogOut = ()=>{

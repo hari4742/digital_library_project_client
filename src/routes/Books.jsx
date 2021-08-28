@@ -1,11 +1,14 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import Book from '../components/Book';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import backend from '../backend';
+import AddBookBtn from '../components/AddBookBtn';
+import { AuthContext } from '../context/AuthenticationContext';
 const Books = () => {
-    let categories = ["Art","Biography","Fantasy","Mathematics","Science","Science Fiction","Story"]
+    let categories = ["Art","Biography","Fantasy","Mathematics","Science","Science Fiction","Story"];
+    const {user} = useContext(AuthContext);
     const [books,setBooks] = useState();
     const [search,setSearch] = useState();
     const fetchBooks = async()=>{
@@ -58,7 +61,10 @@ const Books = () => {
                     </ul>
                 </div>
                 <div className="books-container">
-                    <Search search={search} handleSearch={handleSearch}/>
+                    <div className="search-box">
+                        <Search search={search} handleSearch={handleSearch}/> 
+                        {user.isadmin==='true'?<AddBookBtn/>:null}
+                    </div>
                     <p id="count">({books?books.length:0} books)</p>
                     <div className="books">
                         {books&&books.map((book,index)=>{

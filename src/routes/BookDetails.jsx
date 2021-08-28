@@ -10,7 +10,7 @@ import { AuthContext } from '../context/AuthenticationContext';
 const BookDetails = (props) => {
     const {id,book_name} = useParams();
     const history = useHistory();
-    const {isLogged,user,saved_books,setSavedBooks} = useContext(AuthContext);
+    const {isLogged,user,saved_books,setSavedBooks,setLogged,setUser} = useContext(AuthContext);
     const [book,setBook] = useState();
     const [reviews,setReviews] = useState([]);
     const fetchBook = async()=>{
@@ -24,7 +24,34 @@ const BookDetails = (props) => {
         setReviews(responce.data.data);
         // console.log(responce.data.data);
     }
+    const fetchUser = async()=>{
+        let token = localStorage.getItem("token");
+        // console.log(token);
+        if(token){
+            const response = await backend.post("/auth/verify",{},{headers:{token}});
+            if(response.data.status === "success"){
+                setLogged(true);
+                const userInfo = await backend.get(`/auth/user/${response.data.user_id}`);
+                if(userInfo.data.status === "success"){
+                    setUser(userInfo.data.data);
+                    if(user.user_id){
+                        const saved = await backend.get(`/auth/user/${user.user_id}/profile/get/saved_books`);
+                        // console.log(saved.data);
+                        setSavedBooks(saved.data.data);
+                        // console.log(saved_books);
+                    }
+                }else{
+                    alert(userInfo.data.msg)
+                }
+                // alert(response.data.user_id);
+            }else{
+                setLogged(false);
+                alert(response.data.msg);
+            }
+        }
+    }
     useEffect(()=>{
+        fetchUser();
         fetchBook();
         fetchReviews();
         document.querySelector(".book-details-page").scrollIntoView();
