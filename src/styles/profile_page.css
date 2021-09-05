@@ -179,9 +179,16 @@
   gap: 100px;
 }
 .save-btns p {
-  padding: 7px;
+  padding: 7px 10px;
   cursor: pointer;
   font-size: 25px;
+  border: 1px solid rgb(58, 56, 56);
+  border-radius: 5px;
+}
+.save-btns p:hover {
+  background-color: rgba(82, 78, 78, 0.308);
+  color: white;
+  border: 1px solid rgb(189, 187, 187);
 }
 
 /*          Update Details     */

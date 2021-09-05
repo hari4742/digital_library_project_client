@@ -120,3 +120,7 @@
   width: 100%;
   /* border-bottom: none !important; */
 }
+.signup-page .logo {
+  position: relative;
+  left: 80px;
+}

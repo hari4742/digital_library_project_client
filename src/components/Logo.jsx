@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 const Logo = () => {
     return ( 
-        <div className="logo">
-            <p>Digital</p>
-            <p>Library</p>
-        </div>
+        <Link style={{textDecoration:'none'}} to="/">
+            <div className="logo">
+                <p>Digital</p>
+                <p>Library</p>
+            </div>
+        </Link>
      );
 }
  

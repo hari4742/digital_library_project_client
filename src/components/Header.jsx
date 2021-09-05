@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import {NavLink} from "react-router-dom";
 import backend from '../backend';
 import { AuthContext } from '../context/AuthenticationContext';
-import LoginBtn from './LoginBtn';
+import HBtns from './HBtns';
 import Logo from './Logo';
 import ProfileBtn from './Profile/ProfileBtn';
 const Header = () => {
@@ -47,8 +47,7 @@ const Header = () => {
                 <p><NavLink style={{textDecoration:'none'}} to="/about">About</NavLink></p>
                 {/* <p><a href="/about">About</a></p> */}
             </div>
-            {isLogged?<ProfileBtn/>:<LoginBtn/>}
-            {/* <LoginBtn/> */}
+                {isLogged?<ProfileBtn/>:<HBtns/>}
         </div>
      );
 }
