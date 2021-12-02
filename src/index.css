@@ -20,7 +20,9 @@
   background: #888;
   border-radius: 5px;
 }
-
+a {
+  color: whitesmoke;
+}
 /* Home */
 .display-home {
   height: 80vh;
